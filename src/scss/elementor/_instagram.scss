@@ -1,0 +1,36 @@
+.MediaThumbnail__root {
+  background-color: transparent !important;
+
+  img,
+  video {
+    border-radius: 10px !important;
+  }
+}
+
+.MediaTile__overlay {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.MediaTileIcons__icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.MediaTileIcons__icon {
+  margin-top: 15px !important;
+}
+
+.MediaTileIcons__icon:not(:last-child) {
+  margin-right: 50px !important;
+}
+
+body .MediaThumbnail__image, div.MediaThumbnail__root {
+  width: auto !important;
+}
+
+@media (max-width: 768px) {
+  .MediaTileIcons__icon:not(:last-child) {
+    margin-right: 25px !important;
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+vendor
+dist
+.idea
+.DS_Store
+package-lock.json
+composer.lock

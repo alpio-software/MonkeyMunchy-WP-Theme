@@ -1,0 +1,248 @@
+.site-header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 40;
+}
+
+.site-branding {
+  flex: 0 0 20%;
+  max-width: 20%;
+
+  .custom-logo-link {
+    display: block;
+    font-size: 0;
+
+    img {
+      height: 110px;
+      width: auto;
+    }
+  }
+}
+
+.header-search {
+  flex: 0 0 60%;
+  max-width: 60%;
+  width: 100%;
+
+  form,
+  .search-field {
+    display: block;
+    width: 100%;
+  }
+
+  form {
+    border-radius: 30px;
+    background-color: #fff;
+    background-color: rgba(#fff, 30%);
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .search-field {
+    border: 0;
+    padding: 11px 11px 11px 40px;
+    background: none;
+    transition: all 250ms;
+    border-radius: 30px;
+    color: #fff;
+
+    &::placeholder {
+      color: #fff;
+    }
+
+    &:-ms-input-placeholder {
+      color: #fff;
+    }
+
+    &::-ms-input-placeholder {
+      color: #fff;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgb(#fff, 40%);
+    }
+  }
+
+  .search-submit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(../img/sprite.svg);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+.header-menu-wrapper {
+  flex: 0 0 20%;
+  max-width: 20%;
+
+  .hamburger {
+    @include flexCenterAll;
+    background: none;
+    cursor: pointer;
+    border: 0;
+    width: 55px;
+    height: 55px;
+    transition: all 250ms;
+    border-radius: 5px;
+    margin-left: auto;
+    position: relative;
+    z-index: 110;
+    display: none;
+
+    &:hover {
+      background-color: rgba(#fff, 10%);
+    }
+  }
+
+  .main-navigation {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -1px 1px 20px 10px rgb(0 0 0 / 10%);
+    padding: 30px;
+    text-align: center;
+    background-image: linear-gradient(180deg, #125BB7 0%, #62A7F780 52%, #1AECFF00 100%);
+    transform: translateX(110%);
+    transition: all 350ms;
+
+    & > * {
+      margin-bottom: 50px;
+    }
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      a {
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        padding: 5px 0;
+      }
+    }
+  }
+
+  .widget-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 50px;
+  }
+
+  .desktop-menu {
+    text-align: right;
+
+    ul {
+      li {
+        display: inline-block;
+        margin-right: 15px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb( 0 0 0 / 30%);
+  z-index: 30;
+}
+
+.menu-active {
+  .menu-overlay {
+    display: block;
+  }
+
+  .header-menu-wrapper .main-navigation {
+    transform: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .site-branding {
+    .custom-logo-link {
+      img {
+        height: 80px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .site-branding,
+  .header-menu-wrapper {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .header-search {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .header-search {
+    display: none;
+  }
+
+  .site-branding,
+  .header-menu-wrapper {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .header-menu-wrapper {
+    .main-navigation {
+      width: 100%;
+    }
+
+    .desktop-menu {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  .menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

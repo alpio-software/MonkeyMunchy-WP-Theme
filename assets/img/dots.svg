@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+  <g transform="translate(-64 -1977)" opacity="0.03">
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(64 1977)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(64 1992)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(64 2007)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(79 1977)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(79 1992)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(79 2007)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(94 1977)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(94 1992)" fill="#fff"/>
+    <circle cx="2.5" cy="2.5" r="2.5" transform="translate(94 2007)" fill="#fff"/>
+  </g>
+</svg>

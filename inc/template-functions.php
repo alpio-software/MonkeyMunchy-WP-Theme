@@ -84,3 +84,13 @@ function mm_is_elementor( $post_id = null ) {
 
 	return ! ! get_post_meta( $post_id, '_elementor_edit_mode', true );
 }
+
+/**
+ * Add custom codes between <head> tags.
+ */
+function mm_custom_head_codes() {
+	// Android browser color.
+	echo '<meta name="theme-color" content="#1E2868" />';
+}
+
+add_action( 'wp_head', 'mm_custom_head_codes' );

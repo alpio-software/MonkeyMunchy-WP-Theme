@@ -46,6 +46,7 @@ class Mm_Elementor_Widget_Loader {
 	private function include_widgets_files() {
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-clouds-widget.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-monkey-box-widget.php';
+		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-social-widget.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-town-widget.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-welcome-widget.php';
 	}
@@ -57,6 +58,7 @@ class Mm_Elementor_Widget_Loader {
 		$this->include_widgets_files();
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Clouds_Widget() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Monkey_Box() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Social() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Town_Widget() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Welcome_Widget() );
 	}

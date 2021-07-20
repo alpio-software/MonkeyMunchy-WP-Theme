@@ -16,11 +16,20 @@ $('.mm-clouds').each(function () {
 $('.mm-town').each(function () {
     const current = $(this);
 
-    lottie.loadAnimation({
+    const currentLottie = lottie.loadAnimation({
         container: current[0],
         renderer: 'svg',
         loop: true,
         autoplay: !current.is('[data-paused]'),
         path: current.data('json'),
     });
+
+    currentLottie.addEventListener('DOMLoaded', () => {
+        console.log('Loaded');
+    });
+});
+
+// Video clicks.
+$(document).on('click', '#monkeyturns', function () {
+    console.log('Yes!');
 });

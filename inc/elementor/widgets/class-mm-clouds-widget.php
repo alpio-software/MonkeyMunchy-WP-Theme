@@ -80,6 +80,25 @@ class Mm_Clouds_Widget extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'speed',
+			array(
+				'label'   => esc_html__( 'Speed', 'mm' ),
+				'type'    => Controls_Manager::SLIDER,
+				'range'   => array(
+					'px' => array(
+						'min'  => 0.1,
+						'max'  => 1,
+						'step' => 0.1,
+					),
+				),
+				'default' => array(
+					'unit' => 'px',
+					'size' => 0.1,
+				),
+			)
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -89,31 +108,8 @@ class Mm_Clouds_Widget extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		$anim     = $settings['anim'];
-
-		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			?>
-			<style>
-				.mm-clouds-preview {
-					background-color: #f8f3ef;
-					background-image: url(<?php echo esc_url( get_template_directory_uri() . '/assets/img/cloud.svg' ); ?>);
-					background-size: 150px;
-					background-position: 25px center;
-					background-repeat: no-repeat;
-					padding: 60px 45px;
-					color: #000;
-					border-radius: 3px;
-					position: relative;
-					overflow: hidden;
-					text-align: center;
-					opacity: 0.5;
-				}
-			</style>
-			<div class="mm-clouds-preview"></div>
-			<?php
-		} else {
-			?>
-			<div class="mm-clouds" data-json="<?php echo esc_url( $anim ); ?>"></div>
-			<?php
-		}
+		?>
+		<div class="mm-clouds" data-speed="<?php echo esc_attr( $settings['speed']['size'] ); ?>" data-json="<?php echo esc_url( $anim ); ?>"></div>
+		<?php
 	}
 }

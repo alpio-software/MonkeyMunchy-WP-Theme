@@ -22,6 +22,10 @@ function mm_body_classes( $classes ) {
 		$classes[] = 'no-sidebar';
 	}
 
+	if ( isset( $_COOKIE['mm-night-mode'] ) && '1' === $_COOKIE['mm-night-mode'] ) {
+		$classes[] = 'mm-night-mode';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'mm_body_classes' );
@@ -79,7 +83,7 @@ function mm_is_elementor( $post_id = null ) {
 
 	if ( empty( $post_id ) ) {
 		global $post;
-		$post_id = $post->ID;
+		$post_id = isset( $post->ID ) ? $post->ID : null;
 	}
 
 	return ! ! get_post_meta( $post_id, '_elementor_edit_mode', true );

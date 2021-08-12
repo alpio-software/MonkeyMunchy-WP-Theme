@@ -8,8 +8,7 @@
 }
 
 .MediaTile__overlay {
-  border-radius: 10px;
-  overflow: hidden;
+  display: none;
 }
 
 .MediaTileIcons__icon svg {
@@ -25,8 +24,21 @@
   margin-right: 50px !important;
 }
 
+.FeedHighlightLayout__cell {
+  transition: all 400ms ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
 body .MediaThumbnail__image, div.MediaThumbnail__root {
   width: auto !important;
+  transition: all 200ms ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 768px) {

@@ -86,3 +86,15 @@ svg {
     z-index: 100000;
   }
 }
+
+.mm-loader {
+  svg {
+    width: 75px;
+    height: 75px;
+  }
+
+  path,
+  rect {
+    fill: $secondary;
+  }
+}

@@ -44,63 +44,21 @@
   }
 }
 
-@media (max-width: 1366px) {
-  .site-footer,
-  .mm-top-shape-yes {
-    &::before {
-      height: 102px;
-      background-size: 1366px 102px;
-      top: -56px;
-    }
-  }
-
-  .entry-header,
-  .mm-bottom-shape-yes {
-    &::after {
-      height: 102px;
-      background-size: 1366px 102px;
-      bottom: -56px;
-    }
+.site-footer,
+.mm-top-shape-yes {
+  &::before {
+    height: 77px;
+    background-size: 1024px 77px;
+    top: -38.5px;
   }
 }
 
-@media (max-width: 1280px) {
-  .site-footer,
-  .mm-top-shape-yes {
-    &::before {
-      height: 96px;
-      background-size: 1280px 96px;
-      top: -48px;
-    }
-  }
-
-  .entry-header,
-  .mm-bottom-shape-yes {
-    &::after {
-      height: 96px;
-      background-size: 1280px 96px;
-      bottom: -48px;
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  .site-footer,
-  .mm-top-shape-yes {
-    &::before {
-      height: 77px;
-      background-size: 1024px 77px;
-      top: -38.5px;
-    }
-  }
-
-  .entry-header,
-  .mm-bottom-shape-yes {
-    &::after {
-      height: 77px;
-      background-size: 1024px 77px;
-      bottom: -38.5px;
-    }
+.entry-header,
+.mm-bottom-shape-yes {
+  &::after {
+    height: 77px;
+    background-size: 1024px 77px;
+    bottom: -38.5px;
   }
 }
 

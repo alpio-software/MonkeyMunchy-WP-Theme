@@ -80,6 +80,77 @@ class Mm_Town_Widget extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'loop',
+			array(
+				'label'        => esc_html__( 'Animation Loop', 'mm' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'auto_play',
+			array(
+				'label'        => esc_html__( 'Auto Play', 'mm' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'speed',
+			array(
+				'label'   => esc_html__( 'Speed', 'mm' ),
+				'type'    => Controls_Manager::SLIDER,
+				'range'   => array(
+					'px' => array(
+						'min'  => 0.1,
+						'max'  => 1,
+						'step' => 0.1,
+					),
+				),
+				'default' => array(
+					'unit' => 'px',
+					'size' => 1,
+				),
+			)
+		);
+
+		$this->add_control(
+			'student_url',
+			array(
+				'label' => esc_html__( 'Student URL', 'mm' ),
+				'type'  => Controls_Manager::TEXT,
+			)
+		);
+
+		$this->add_control(
+			'monkey_url',
+			array(
+				'label' => esc_html__( 'Monkey URL', 'mm' ),
+				'type'  => Controls_Manager::TEXT,
+			)
+		);
+
+		$this->add_control(
+			'store_url',
+			array(
+				'label' => esc_html__( 'Store URL', 'mm' ),
+				'type'  => Controls_Manager::TEXT,
+			)
+		);
+
+		$this->add_control(
+			'cafe_url',
+			array(
+				'label' => esc_html__( 'Cafe URL', 'mm' ),
+				'type'  => Controls_Manager::TEXT,
+			)
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -87,35 +158,22 @@ class Mm_Town_Widget extends Widget_Base {
 	 * Render widget result.
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
-		$anim     = $settings['anim'];
-
-		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			?>
-			<style>
-				.mm-town-preview {
-					background-color: #f8f3ef;
-					background-image: url(<?php echo esc_url( get_template_directory_uri() . '/assets/img/town.svg' ); ?>);
-					background-size: 150px;
-					background-position: 25px center;
-					background-repeat: no-repeat;
-					padding: 60px 45px;
-					color: #000;
-					border-radius: 3px;
-					position: relative;
-					overflow: hidden;
-					text-align: center;
-					opacity: 0.5;
-				}
-			</style>
-			<div class="mm-town-preview"></div>
-			<?php
-		} else {
-			?>
-			<div class="mm-town-wrapper">
-				<div class="mm-town" data-json="<?php echo esc_url( $anim ); ?>"></div>
-			</div>
-			<?php
-		}
+		$settings  = $this->get_settings_for_display();
+		$anim_args = array(
+			'speed'      => $settings['speed']['size'],
+			'animation'  => $settings['anim'],
+			'loop'       => 'yes' === $settings['loop'],
+			'autoPlay'   => 'yes' === $settings['auto_play'],
+			'studentUrl' => $settings['student_url'],
+			'monkeyUrl'  => $settings['monkey_url'],
+			'storeUrl'   => $settings['store_url'],
+			'cafeUrl'    => $settings['cafe_url'],
+		);
+		?>
+		<div class="mm-town-wrapper">
+			<?php mm_loader(); ?>
+			<div class="mm-town" data-config=<?php echo wp_json_encode( $anim_args ); ?>></div>
+		</div>
+		<?php
 	}
 }

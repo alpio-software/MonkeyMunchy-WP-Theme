@@ -1,35 +1,86 @@
 import $ from 'jquery';
 import lottie from 'lottie-web';
 
-$('.mm-clouds').each(function () {
-    const current = $(this);
+$(window).on('elementor/frontend/init', function () {
+    // eslint-disable-next-line no-undef
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/mm-clouds-widget.default',
+        function ($scope, $) {
+            $('.mm-clouds').each(function () {
+                const current = $(this);
 
-    lottie.loadAnimation({
-        container: current[0],
-        renderer: 'svg',
-        loop: true,
-        autoplay: !current.is('[data-paused]'),
-        path: current.data('json'),
-    });
+                const clouds = lottie.loadAnimation({
+                    container: current[0],
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: !current.is('[data-paused]'),
+                    path: current.data('json'),
+                });
+
+                clouds.setSpeed(current.data('speed'));
+            });
+        }
+    );
 });
 
-$('.mm-town').each(function () {
-    const current = $(this);
+const initTown = () => {
+    const townDom = $('.mm-town');
+    const townConf = JSON.parse(townDom.attr('data-config'));
 
-    const currentLottie = lottie.loadAnimation({
-        container: current[0],
+    const town = lottie.loadAnimation({
+        container: townDom[0],
         renderer: 'svg',
-        loop: true,
-        autoplay: !current.is('[data-paused]'),
-        path: current.data('json'),
+        loop: townConf.loop,
+        autoplay: townConf.autoPlay,
+        path: townConf.animation,
     });
 
-    currentLottie.addEventListener('DOMLoaded', () => {
-        console.log('Loaded');
-    });
+    town.setSpeed(townConf.speed);
+
+    return town;
+};
+
+$(window).on('elementor/frontend/init', function () {
+    // eslint-disable-next-line no-undef
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/mm-town-widget.default',
+        function ($scope, $) {
+            let town = initTown($);
+
+            town.addEventListener('data_ready', function () {
+                $('.mm-town-wrapper').find('.mm-loader').remove();
+            });
+
+            $(document).on('mmNightModeChange', function () {
+                //town.play();
+            });
+        }
+    );
 });
+
+const townConf = JSON.parse($('.mm-town').attr('data-config'));
 
 // Video clicks.
-$(document).on('click', '#monkeyturns', function () {
-    console.log('Yes!');
+$(document).on('click', '#monkey', function () {
+    if (townConf.monkeyUrl && typeof townConf.monkeyUrl !== 'undefined') {
+        window.location.href = townConf.monkeyUrl;
+    }
+});
+
+$(document).on('click', '#store', function () {
+    if (townConf.storeUrl && typeof townConf.storeUrl !== 'undefined') {
+        window.location.href = townConf.storeUrl;
+    }
+});
+
+$(document).on('click', '#student', function () {
+    if (townConf.studentUrl && typeof townConf.studentUrl !== 'undefined') {
+        window.location.href = townConf.studentUrl;
+    }
+});
+
+$(document).on('click', '#cafe', function () {
+    if (townConf.cafeUrl && typeof townConf.cafeUrl !== 'undefined') {
+        window.location.href = townConf.cafeUrl;
+    }
 });

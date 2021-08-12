@@ -1,4 +1,59 @@
 .mm-welcome {
+  #store,
+  #student,
+  #monkey,
+  #cafe {
+    cursor: pointer;
+  }
+
+  #night {
+    transition: all 250ms ease;
+  }
+
+  .elementor-background-overlay,
+  p,
+  h1.elementor-heading-title,
+  h2.elementor-heading-title {
+    transition: all 250ms ease;
+  }
+
+  .mm-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+  }
+
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 250ms ease;
+    opacity: 0;
+    visibility: hidden;
+
+    img {
+      max-width: none;
+      height: 50vh;
+      width: auto;
+    }
+  }
+
+  .moon {
+    position: absolute;
+    top: 50%;
+    margin-top: -75px;
+    width: 175px !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 400ms ease-in-out;
+
+    img {
+      width: 100%;
+    }
+  }
+
   .mm-clouds {
     position: relative;
     width: 2560px;
@@ -6,10 +61,11 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: -150px;
+    transition: all 250ms ease;
   }
 
   .mm-town-wrapper {
-    height: 475px;
+    height: 560px;
     position: relative;
   }
 
@@ -17,7 +73,7 @@
     position: absolute;
     bottom: 0;
     width: 5314px;
-    height: 1002px;
+    height: 100%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -27,19 +83,16 @@
   .mm-welcome {
     .mm-clouds {
       width: 2126px;
-      height: 332px;
     }
 
     .mm-town-wrapper {
-      height: 390px;
+      height: 540px;
+      margin-top: -150px;
     }
-  }
-}
 
-@media (max-width: 1280px) {
-  .mm-welcome {
-    .mm-town-wrapper {
-      height: 375px;
+    .moon {
+      margin-top: -40px;
+      width: 150px !important;
     }
   }
 }
@@ -52,11 +105,13 @@
     }
 
     .mm-town-wrapper {
-      height: 325px;
+      height: 435px;
+      margin-top: -35px;
     }
 
-    .mm-town {
-      height: 790px;
+    .moon {
+      margin-top: 0;
+      width: 125px !important;
     }
   }
 }
@@ -77,11 +132,80 @@
     }
 
     .mm-town-wrapper {
-      height: 275px;
+      height: 350px;
     }
 
-    .mm-town {
-      height: 600px;
+    .moon {
+      margin-top: 25px;
+      width: 115px !important;
     }
+
+    .stars {
+      img {
+        height: 85vh;
+      }
+    }
+  }
+}
+
+// Elementor live edit.
+.elementor-editor-active {
+  &:not(.mm-night-mode) {
+    .mm-welcome {
+      .moon {
+        opacity: 0.5;
+        visibility: visible;
+      }
+
+      .stars {
+        opacity: 0.5;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Night mode.
+body:not(.mm-night-mode) {
+  .mm-welcome {
+    #night {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.mm-night-mode {
+  .mm-welcome {
+    #night {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .moon {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-125px);
+    }
+
+    .stars {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .elementor-background-overlay {
+      background: #020F4E !important;
+    }
+
+    p,
+    h1.elementor-heading-title,
+    h2.elementor-heading-title {
+      color: #fff !important;
+    }
+  }
+
+  .mm-clouds {
+    opacity: 0;
+    visibility: hidden;
   }
 }

@@ -95,28 +95,18 @@ module.exports = (env, argv) => {
                     ],
                 },
                 {
-                    test: /\.(ttf|eot|woff|woff2|svg)$/,
-                    use: {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'fonts',
-                            publicPath: 'fonts',
-                        },
+                    test: /\.(ttf|eot|woff|woff2)$/,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'fonts/[hash][ext]',
                     },
                 },
                 {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].[ext]',
-                                publicPath: 'img',
-                                outputPath: 'img',
-                            },
-                        },
-                    ],
+                    test: /\.(png|jpe?g|gif|svg)$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'img/[hash][ext]',
+                    },
                 },
             ],
         },

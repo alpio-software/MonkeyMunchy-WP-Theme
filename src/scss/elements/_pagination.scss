@@ -1,0 +1,25 @@
+.pagination {
+  @include flexCenterAll;
+
+  a,
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    text-decoration: none;
+    background-color: $primary;
+    color: #fff;
+    border-radius: 50%;
+    margin: 5px;
+    font-family: "astounder-squared-bb", sans-serif;
+    font-size: 18px;
+
+    &:hover,
+    &.current {
+      background-color: $secondary;
+      color: #000;
+    }
+  }
+}

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'MM_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'MM_VERSION', '1.1.2' );
+	define( 'MM_VERSION', '1.1.5' );
 }
 
 if ( ! function_exists( 'mm_setup' ) ) :
@@ -191,3 +191,13 @@ require get_template_directory() . '/inc/template-icons.php';
  * Template widgets.
  */
 require get_template_directory() . '/inc/widgets/init.php';
+
+/**
+ * Cafe post type.
+ */
+require get_template_directory() . '/inc/cafe.php';
+
+/**
+ * Breadcrumbs class.
+ */
+require get_template_directory() . '/inc/classes/class-mm-breadcrumbs.php';

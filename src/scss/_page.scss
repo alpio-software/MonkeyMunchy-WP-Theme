@@ -15,6 +15,11 @@
     height: auto;
     z-index: 10;
   }
+
+  .header-content {
+    position: relative;
+    z-index: 20;
+  }
 }
 
 .entry-title {

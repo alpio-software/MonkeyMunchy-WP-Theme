@@ -1,3 +1,6 @@
+$header-gutter: 15px;
+$header-gutter-val: $header-gutter / 2; // Don't edit this!
+
 .site-header {
   position: absolute;
   width: 100%;
@@ -12,17 +15,17 @@
 }
 
 .site-branding {
-  flex: 0 0 20%;
-  max-width: 20%;
-  padding-right: 7.5px;
+  flex: 0 0 190px;
+  max-width: 190px;
+  padding-right: $header-gutter-val;
 
   .custom-logo-link {
     display: block;
     font-size: 0;
 
     img {
-      height: 110px;
-      width: auto;
+      height: auto;
+      width: 100%;
     }
   }
 }
@@ -95,12 +98,14 @@
 }
 
 .header-menu-wrapper {
-  flex: 0 0 20%;
-  max-width: 20%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: calc(60% - 95px);
+  max-width: calc(60% - 95px);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-left: 7.5px;
+  padding-left: $header-gutter-val;
+  padding-right: $header-gutter-val;
 
   .hamburger {
     @include flexCenterAll;
@@ -180,6 +185,16 @@
   }
 }
 
+.night-mode-wrapper {
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: calc(40% - 95px);
+  max-width: calc(40% - 95px);
+  padding-left: $header-gutter-val;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .menu-overlay {
   display: none;
   position: fixed;
@@ -201,37 +216,20 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 991px) {
   .site-branding {
-    .custom-logo-link {
-      img {
-        height: 80px;
-      }
-    }
+    flex: 0 0 150px;
+    max-width: 150px;
   }
 
-  .header-search {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .site-branding,
   .header-menu-wrapper {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-
-@media (max-width: 1199px) {
-  .site-branding,
-  .header-menu-wrapper {
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex-basis: calc(60% - 75px);
+    max-width: calc(60% - 75px);
   }
 
-  .header-search {
-    flex: 0 0 50%;
-    max-width: 50%;
+  .night-mode-wrapper {
+    flex: 0 0 calc(40% - 75px);
+    max-width: calc(40% - 75px);
   }
 }
 
@@ -240,19 +238,16 @@
     padding: 10px;
   }
 
-  .header-search {
-    display: none;
-  }
-
-  .site-branding,
-  .header-menu-wrapper {
-    flex: 0 0 50%;
-    max-width: 50%;
+  .site-branding {
+    order: 1;
   }
 
   .header-menu-wrapper {
+    flex-basis: 55px + $header-gutter-val;
+    max-width: 55px + $header-gutter-val;
+    padding-right: 0;
+    order: 3;
     justify-content: flex-end;
-    flex-wrap: wrap;
 
     .main-navigation {
       width: 100%;
@@ -264,8 +259,17 @@
 
     .hamburger {
       display: flex;
-      margin-left: 7.5px;
     }
+  }
+
+  .night-mode-wrapper {
+    justify-content: flex-end;
+    margin-left: auto;
+    order: 2;
+  }
+
+  .header-search {
+    display: none;
   }
 
   .menu-overlay {

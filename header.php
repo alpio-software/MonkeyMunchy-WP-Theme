@@ -28,14 +28,8 @@
 			<?php the_custom_logo(); ?>
 		</div>
 
-		<div class="header-search">
-			<?php get_search_form(); ?>
-		</div>
-
 		<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
 			<div class="header-menu-wrapper">
-				<?php get_template_part( 'template-parts/elements/element', 'night-mode-switcher' ); ?>
-
 				<div class="desktop-menu">
 					<?php
 					wp_nav_menu(
@@ -63,4 +57,12 @@
 				</nav>
 			</div>
 		<?php endif; ?>
+
+		<div class="night-mode-wrapper">
+			<?php
+			if ( is_front_page() ) {
+				get_template_part( 'template-parts/elements/element', 'night-mode-switcher' );
+			}
+			?>
+		</div>
 	</header>

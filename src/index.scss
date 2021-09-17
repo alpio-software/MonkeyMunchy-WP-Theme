@@ -5,6 +5,7 @@
 @import "./scss/header";
 @import "./scss/footer";
 @import "./scss/page";
+@import "./scss/feed";
 @import "./scss/wp-admin-bar-fix";
 
 // Modules.
@@ -23,4 +24,6 @@
 @import "./scss/widgets/social-links";
 
 // Elements.
+@import "./scss/elements/breadcrumbs";
 @import "./scss/elements/night-mode-switcher";
+@import "./scss/elements/pagination";

@@ -1,0 +1,80 @@
+.feed-posts {
+  margin-top: 60px;
+}
+
+.feed-post {
+  width: 48%;
+  margin-bottom: 60px;
+
+  img {
+    width: 100%;
+  }
+
+  &.feed-sizer {
+    margin: 0;
+  }
+
+  .post-wrapper {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .post-thumbnail,
+  .post-title-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .post-bottom {
+    padding: 15px;
+  }
+
+  .hentry {
+    margin: 0 0 15px;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  .feed-excerpt {
+    margin-bottom: 15px;
+  }
+
+  .categories {
+    margin-bottom: -5px;
+
+    a {
+      display: inline-block;
+      padding: 3px 5px;
+      color: #fff;
+      border-radius: 3px;
+      font-size: 15px;
+      background-color: $primary;
+      text-decoration: none;
+      margin-right: 5px;
+      margin-bottom: 5px;
+
+      &:hover {
+        background-color: $secondary;
+        color: #000;
+      }
+    }
+  }
+}
+
+.feed-post-gutter {
+  width: 4%;
+}
+
+@media (max-width: 575px) {
+  .feed-posts {
+    margin-top: 15px;
+  }
+
+  .feed-post {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}

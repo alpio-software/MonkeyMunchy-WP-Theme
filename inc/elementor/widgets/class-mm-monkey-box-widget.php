@@ -144,7 +144,7 @@ class Mm_Monkey_Box extends Widget_Base {
 		);
 
 		$this->end_controls_tab();
-		$this->end_controls_tabs( 'box_images' );
+		$this->end_controls_tabs();
 
 		$this->add_control(
 			'number',
@@ -332,8 +332,10 @@ class Mm_Monkey_Box extends Widget_Base {
 					}
 				};
 
-				var image_url = elementor.imagesManager.getImageUrl( image );
-				var hover_image_url = elementor.imagesManager.getImageUrl( hover_image );
+				var image_url = '', hover_image_url = '';
+
+				image_url = image ? elementor.imagesManager.getImageUrl( image ) : '';
+				hover_image_url = hover_image ? elementor.imagesManager.getImageUrl( hover_image ) : '';
 
 				var imageHtml = '<img src="' + image_url + '"/>';
 				var hoverImageHtml = '<img src="' + hover_image_url + '"/>';

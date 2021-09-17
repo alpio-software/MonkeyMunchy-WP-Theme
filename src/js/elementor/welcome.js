@@ -25,19 +25,24 @@ $(window).on('elementor/frontend/init', function () {
 
 const initTown = () => {
     const townDom = $('.mm-town');
-    const townConf = JSON.parse(townDom.attr('data-config'));
 
-    const town = lottie.loadAnimation({
-        container: townDom[0],
-        renderer: 'svg',
-        loop: townConf.loop,
-        autoplay: townConf.autoPlay,
-        path: townConf.animation,
-    });
+    if (townDom.length) {
+        const townConf = JSON.parse(townDom.attr('data-config'));
 
-    town.setSpeed(townConf.speed);
+        const town = lottie.loadAnimation({
+            container: townDom[0],
+            renderer: 'svg',
+            loop: townConf.loop,
+            autoplay: townConf.autoPlay,
+            path: townConf.animation,
+        });
 
-    return town;
+        town.setSpeed(townConf.speed);
+
+        return town;
+    }
+
+    return null;
 };
 
 $(window).on('elementor/frontend/init', function () {
@@ -47,20 +52,24 @@ $(window).on('elementor/frontend/init', function () {
         function ($scope, $) {
             let town = initTown($);
 
-            town.addEventListener('data_ready', function () {
-                $('.mm-town-wrapper').find('.mm-loader').remove();
-            });
+            if (town) {
+                town.addEventListener('data_ready', function () {
+                    $('.mm-town-wrapper').find('.mm-loader').remove();
+                });
 
-            $(document).on('mmNightModeChange', function () {
-                //town.play();
-            });
+                $(document).on('mmNightModeChange', function () {
+                    //town.play();
+                });
+            }
         }
     );
 });
 
-const townConf = JSON.parse($('.mm-town').attr('data-config'));
+const townConf = $('.mm-town').length
+    ? JSON.parse($('.mm-town').attr('data-config'))
+    : '';
 
-// Video clicks.
+// Animation clicks.
 $(document).on('click', '#monkey', function () {
     if (townConf.monkeyUrl && typeof townConf.monkeyUrl !== 'undefined') {
         window.location.href = townConf.monkeyUrl;

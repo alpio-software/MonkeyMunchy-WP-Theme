@@ -14,7 +14,7 @@ if ( ! function_exists( 'mm_posted_on' ) ) :
 	function mm_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			// $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
 		$time_string = sprintf(
@@ -118,8 +118,10 @@ if ( ! function_exists( 'mm_post_thumbnail' ) ) :
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
+	 *
+	 * @param string $size Image size.
 	 */
-	function mm_post_thumbnail() {
+	function mm_post_thumbnail( $size = 'post-thumbnail' ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -128,15 +130,15 @@ if ( ! function_exists( 'mm_post_thumbnail' ) ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail( $size ); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1" title="<?php the_title(); ?>">
 				<?php
 				the_post_thumbnail(
-					'post-thumbnail',
+					$size,
 					array(
 						'alt' => the_title_attribute(
 							array(
@@ -195,4 +197,18 @@ function mm_loader() {
 		  </svg>
 	</div>
 	<?php
+}
+
+/**
+ * Render breadcrumbs template.
+ */
+function mm_breadcrumb() {
+	$args = array(
+		'show_browse' => false,
+		'show_title'  => false,
+	);
+
+	$breadcrumb = new Mm_Breadcrumbs( '', $args );
+
+	echo $breadcrumb->get_trail(); // phpcs:ignore WordPress.Security.EscapeOutput
 }

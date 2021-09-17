@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Cookies from 'js-cookie';
+import { isNight, isDayMode } from './helpers';
 
 $(document).on('click', '.hamburger, .menu-overlay', function () {
     $('body').toggleClass('menu-active');
@@ -11,7 +12,8 @@ $('.night-mode-switcher input').on('change', function () {
     const checked = checkbox.prop('checked');
     const cookeVal = checked === true ? 1 : 0;
 
-    Cookies.set('mm-night-mode', cookeVal);
+    // Set 1 day night mode cookie.
+    Cookies.set('mm-night-mode', cookeVal, { expires: 1 });
 
     /**
      * Trigger global night mode change event.
@@ -25,3 +27,7 @@ $('.night-mode-switcher input').on('change', function () {
         $('body').removeClass('mm-night-mode');
     }
 });
+
+if (isNight() && !isDayMode()) {
+    $('.night-mode-switcher input').prop('checked', true).trigger('change');
+}

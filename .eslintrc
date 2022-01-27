@@ -9,14 +9,13 @@
         "eslint:recommended",
         "prettier"
     ],
-    "parser": "@babel/eslint-parser",
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
         "ecmaVersion": 11,
-        "sourceType": "module",
-        "requireConfigFile": false
+        "sourceType": "module"
     },
     "rules": {
         "no-console": "warn"

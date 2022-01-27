@@ -48,6 +48,7 @@ class Mm_Elementor_Widget_Loader {
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-monkey-box-widget.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-social-widget.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-town-widget.php';
+		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-video-scroll.php';
 		require_once get_template_directory() . '/inc/elementor/widgets/class-mm-welcome-widget.php';
 	}
 
@@ -60,6 +61,7 @@ class Mm_Elementor_Widget_Loader {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Monkey_Box() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Social() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Town_Widget() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Video_Scroll() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Mm_Welcome_Widget() );
 	}
 }

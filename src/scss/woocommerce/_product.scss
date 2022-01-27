@@ -1,0 +1,25 @@
+.single-product {
+  .entry-content {
+    &:not(.entry-content-wide) {
+      .summary {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.tc-chars {
+  font-size: 13px;
+}
+
+.tm-extra-product-options-multiple_file_upload,
+.tm-extra-product-options-upload {
+  small {
+    display: none;
+  }
+}
+
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+  font-size: 25px;
+}

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'MM_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'MM_VERSION', '1.1.5' );
+	define( 'MM_VERSION', '1.2.5' );
 }
 
 if ( ! function_exists( 'mm_setup' ) ) :
@@ -124,6 +124,7 @@ add_action( 'after_setup_theme', 'mm_setup' );
 function mm_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'mm_content_width', 640 );
 }
+
 add_action( 'after_setup_theme', 'mm_content_width', 0 );
 
 /**
@@ -155,6 +156,7 @@ function mm_scripts() {
 	// Remove Facebook Review plugin stylesheets.
 	wp_dequeue_style( 'fbrev_css' );
 }
+
 add_action( 'wp_enqueue_scripts', 'mm_scripts' );
 
 /**
@@ -201,3 +203,20 @@ require get_template_directory() . '/inc/cafe.php';
  * Breadcrumbs class.
  */
 require get_template_directory() . '/inc/classes/class-mm-breadcrumbs.php';
+
+/**
+ * Call WooCommerce.
+ */
+require get_template_directory() . '/inc/woocommerce/init.php';
+
+/**
+ * Call Metaboxes.
+ */
+require get_template_directory() . '/inc/metabox/init.php';
+
+add_filter(
+	'show_admin_bar',
+	function() {
+		return ! is_page_template( 'page-video-scroll.php' ) && current_user_can( 'manage_options' );
+	}
+);

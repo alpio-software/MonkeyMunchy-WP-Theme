@@ -11,6 +11,9 @@ $video_arr = array(
 	'all'                      => array(
 		'url' => 'https://monkey.local/wp-content/uploads/2022/01/Monkey_Munchy_Walk-All.mp4',
 	),
+	'first_walk_all'           => array(
+		'url' => 'https://monkey.local/wp-content/uploads/2022/01/01-Monkey_Munchy_Walk-Main_Street.mp4',
+	),
 	'first_loop'               => array(
 		'url' => 'https://monkey.local/wp-content/uploads/2021/11/100-01_LOOP.mp4',
 	),
@@ -213,19 +216,45 @@ if ( isset( $_POST['password'] ) && '123asd' === $_POST['password'] ) : // phpcs
 		<span><?php esc_html_e( 'Monkey Town Loading...', 'mm' ); ?></span>
 	</div>
 	<div class="video-scroll">
-		<div class="video-scroll__wrapper" data-name="all">
-			<video
-				class="video-scroll__video"
-				src="<?php echo esc_url( $video_arr['all']['url'] ); ?>"
-				muted
-			></video>
-		</div>
 		<div class="video-scroll__wrapper" data-name="first-loop">
 			<video
 				class="video-scroll__video"
 				src="<?php echo esc_url( $video_arr['first_loop']['url'] ); ?>"
 				autoplay
 				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="first-walk-all">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['first_walk_all']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="third-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['third_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="turn-left">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['turn_left']['url'] ); ?>"
 				muted
 			></video>
 		</div>

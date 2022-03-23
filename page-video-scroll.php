@@ -8,12 +8,6 @@
 
 get_header( 'empty' );
 $video_arr = array(
-	'all'                      => array(
-		'url' => 'https://monkey.local/wp-content/uploads/2022/01/Monkey_Munchy_Walk-All.mp4',
-	),
-	'first_walk_all'           => array(
-		'url' => 'https://monkey.local/wp-content/uploads/2022/01/01-Monkey_Munchy_Walk-Main_Street.mp4',
-	),
 	'first_loop'               => array(
 		'url' => 'https://monkey.local/wp-content/uploads/2021/11/100-01_LOOP.mp4',
 	),
@@ -110,9 +104,6 @@ $video_arr = array(
 );
 if ( isset( $_SERVER['SERVER_ADDR'] ) && '127.0.0.1' !== $_SERVER['SERVER_ADDR'] ) {
 	$video_arr = array(
-		'all'                      => array(
-			'url' => '',
-		),
 		'first_loop'               => array(
 			'url' => 'https://monkeymunchy.com/wp-content/uploads/2022/01/201-01_LOOP.mp4',
 		),
@@ -219,16 +210,43 @@ if ( isset( $_POST['password'] ) && '123asd' === $_POST['password'] ) : // phpcs
 		<div class="video-scroll__wrapper" data-name="first-loop">
 			<video
 				class="video-scroll__video"
-				src="<?php echo esc_url( $video_arr['first_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted>
+				<source src="<?php echo esc_url( $video_arr['first_loop']['url'] ); ?>" type="video/mp4">
+			</video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="first-walk">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src=""
+				muted>
+				<source src="<?php echo esc_url( $video_arr['first_walk']['url'] ); ?>" type="video/mp4">
+			</video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="second-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['second_loop']['url'] ); ?>"
 				autoplay
 				loop
 				muted
 			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
 		</div>
-		<div class="video-scroll__wrapper" data-name="first-walk-all">
+		<div class="video-scroll__wrapper" data-name="second-walk">
 			<video
-				class="video-scroll__video"
-				src="<?php echo esc_url( $video_arr['first_walk_all']['url'] ); ?>"
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['second_walk']['url'] ); ?>"
 				muted
 			></video>
 		</div>
@@ -258,12 +276,262 @@ if ( isset( $_POST['password'] ) && '123asd' === $_POST['password'] ) : // phpcs
 				muted
 			></video>
 		</div>
+		<div class="video-scroll__wrapper" data-name="left-first-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['left_first_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-first-walk">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['left_first_walk']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-second-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['left_second_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-second-walk">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['left_second_walk']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-third-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['left_third_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-second-loop-return">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['left_second_loop_return']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-second-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['left_second_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-first-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['left_first_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="left-first-loop-return">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['left_first_loop_return']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="turn-left-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['turn_left_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="third-loop-return">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['third_loop_return']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="second-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['second_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="second-loop-return">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['second_loop_return']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="first-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['first_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
 		<div class="video-scroll__wrapper" data-name="first-loop-return">
 			<video
 				class="video-scroll__video"
 				src="<?php echo esc_url( $video_arr['first_loop_return']['url'] ); ?>"
 				autoplay
 				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="turn-right">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['turn_right']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-first-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['right_first_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-first-walk">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['right_first_walk']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-second-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['right_second_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-second-walk">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['right_second_walk']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-third-loop">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['right_third_loop']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-second-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['right_second_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-second-loop-return">
+			<video
+				class="video-scroll__video"
+				src="<?php echo esc_url( $video_arr['right_second_loop_return']['url'] ); ?>"
+				autoplay
+				loop
+				muted
+			></video>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="left"
+			></button>
+			<button
+				type="button"
+				class="video-scroll__button"
+				data-name="right"
+			></button>
+		</div>
+		<div class="video-scroll__wrapper" data-name="right-first-walk-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['right_first_walk_return']['url'] ); ?>"
+				muted
+			></video>
+		</div>
+		<div class="video-scroll__wrapper" data-name="turn-right-return">
+			<video
+				class="video-scroll__video video-scroll__video--scrub"
+				src="<?php echo esc_url( $video_arr['turn_right_return']['url'] ); ?>"
 				muted
 			></video>
 		</div>

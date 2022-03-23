@@ -7,7 +7,8 @@
  * @package Monkey_Munchy
  */
 
-$clouds = mm_opt( 'page_clouds' );
+$clouds     = mm_opt( 'page_clouds' );
+$page_width = get_post_meta( get_the_ID(), 'content-width', true );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -23,7 +24,7 @@ $clouds = mm_opt( 'page_clouds' );
 		<?php endif; ?>
 	</header>
 
-	<div class="entry-content">
+	<div class="entry-content entry-content-<?php echo esc_attr( $page_width ); ?>">
 		<?php the_content(); ?>
 	</div>
 </article>

@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const sass = require('sass');
@@ -17,17 +17,7 @@ module.exports = (env, argv) => {
             filename: '[name].js',
         },
         optimization: {
-            minimizer: [
-                new TerserJSPlugin(),
-                new OptimizeCSSAssetsPlugin({
-                    cssProcessorOptions: {
-                        map: {
-                            inline: false,
-                            annotation: true,
-                        },
-                    },
-                }),
-            ],
+            minimizer: [new TerserJSPlugin(), new CSSMinimizerWebpackPlugin()],
         },
         plugins: [
             new CleanWebpackPlugin({

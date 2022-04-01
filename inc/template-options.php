@@ -45,6 +45,41 @@ CSF::createSection(
 CSF::createSection(
 	$prefix,
 	array(
+		'title'  => esc_html__( 'Header', 'mm' ),
+		'icon'   => 'fas fa-cogs',
+		'fields' => array(
+			array(
+				'id'    => 'opensea',
+				'type'  => 'text',
+				'title' => esc_html__( 'Opensea URL', 'mm' ),
+			),
+			array(
+				'id'    => 'discord',
+				'type'  => 'text',
+				'title' => esc_html__( 'Discord URL', 'mm' ),
+			),
+			array(
+				'id'    => 'instagram',
+				'type'  => 'text',
+				'title' => esc_html__( 'Instagram URL', 'mm' ),
+			),
+			array(
+				'id'    => 'twitter',
+				'type'  => 'text',
+				'title' => esc_html__( 'Twitter URL', 'mm' ),
+			),
+			array(
+				'id'    => 'medium',
+				'type'  => 'text',
+				'title' => esc_html__( 'Medium URL', 'mm' ),
+			),
+		),
+	)
+);
+
+CSF::createSection(
+	$prefix,
+	array(
 		'title'  => esc_html__( 'Footer', 'mm' ),
 		'icon'   => 'fas fa-cogs',
 		'fields' => array(

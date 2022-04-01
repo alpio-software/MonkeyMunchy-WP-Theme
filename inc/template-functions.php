@@ -65,9 +65,7 @@ add_filter( 'upload_mimes', 'mm_mime_types' );
  * @return mixed|string
  */
 function mm_opt( $key = '', $default = '' ) {
-	$opt = get_option( 'mm' );
-
-	return isset( $opt[ $key ] ) ? $opt[ $key ] : $default;
+	return isset( MM_OPT[ $key ] ) ? MM_OPT[ $key ] : $default;
 }
 
 /**

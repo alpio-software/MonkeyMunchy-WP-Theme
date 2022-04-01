@@ -9,13 +9,12 @@
 }
 
 .switch {
+  flex: 0 0 auto;
   width: 75px;
-  flex: 0 0 75px;
   height: 40px;
   display: block;
   position: relative;
   cursor: pointer;
-  margin-right: 7.5px;
 }
 
 .switch__background {

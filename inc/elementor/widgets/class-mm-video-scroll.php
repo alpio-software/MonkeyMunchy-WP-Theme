@@ -63,7 +63,7 @@ class Mm_Video_Scroll extends Widget_Base {
 	/**
 	 * Widget controls.
 	 */
-	protected function _register_controls() { // phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
+	protected function register_controls() { // phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
 		$this->start_controls_section(
 			'content_section',
 			array(

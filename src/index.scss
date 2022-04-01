@@ -1,4 +1,8 @@
+// Modules.
+@import "~flickity/dist/flickity.css";
+@import "~hamburgers/_sass/hamburgers/hamburgers";
 @import "~normalize.css";
+
 @import "./scss/variables";
 @import "./scss/mixins";
 @import "./scss/global";
@@ -7,10 +11,6 @@
 @import "./scss/page";
 @import "./scss/feed";
 @import "./scss/wp-admin-bar-fix";
-
-// Modules.
-@import "~flickity/dist/flickity.css";
-@import "~hamburgers/_sass/hamburgers/hamburgers";
 
 // Elementor.
 @import "./scss/elementor/contact";
